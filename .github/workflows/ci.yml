@@ -15,13 +15,12 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 8.2
+        php-version: 8.
 
     - name: Install Laravel Dependencies
       run: |
         cd laravel-app
         composer install --no-interaction
-
 
     - name: Simulate Deployment to Windows XAMPP Folder
       run: |
