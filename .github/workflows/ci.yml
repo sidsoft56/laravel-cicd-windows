@@ -1,0 +1,33 @@
+name: Laravel CI/CD Simulate (Windows)
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
+
+    - name: Install Laravel Dependencies
+      run: |
+        cd laravel-app
+        composer install --no-interaction
+
+    - name: Run Laravel Tests
+      run: |
+        cd laravel-app
+        php artisan test
+
+    - name: Simulate Deployment to Windows XAMPP Folder
+      run: |
+        mkdir -p deploy
+        cp -r laravel-app/* deploy/
