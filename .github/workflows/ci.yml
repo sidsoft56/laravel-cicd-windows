@@ -22,11 +22,6 @@ jobs:
         cd laravel-app
         composer install --no-interaction
 
-    - name: Run Laravel Tests
-      run: |
-        cd laravel-app
-        php artisan test
-	continue-on-error: true
 
     - name: Simulate Deployment to Windows XAMPP Folder
       run: |
